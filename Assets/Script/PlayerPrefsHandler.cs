@@ -13,9 +13,9 @@ public static class playerPrefHandler
      * PlayerPrefs float soundVolume, sound volume throughout the game
      * 
      * PlayerPrefsX int[] areaGame, order of area for the gamethrough. 0=kitchen,1=bedroom,2=bathroom
-     * PlayerPrefs int area1Key, location of key in area 1. value= 0-2
-     * PlayerPrefs int area2Key, location of key in area 2. value= 0-2
-     * PlayerPrefs int area3Key, location of key in area 3. value= 0-2
+     * PlayerPrefs int area1Key, location of key in area 1. value= 0-*
+     * PlayerPrefs int area2Key, location of key in area 2. value= 0-*
+     * PlayerPrefs int area3Key, location of key in area 3. value= 0-*
      * 
      * PlayerPrefsX bool[] areaDone, list of completed area. 1 true can go to area2, 2 trues can go to area3, 3 trues you can exit
      * 
