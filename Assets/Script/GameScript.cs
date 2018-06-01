@@ -8,29 +8,43 @@ public class GameScript : MonoBehaviour {
     public GameObject kitchenDisplay;
     public GameObject bedroomDisplay;
     public GameObject bathroomDisplay;
+    public GameObject PauseDisplay;
     public GameObject windowsSetting;
     public Slider VolumeMusic;
     public Slider VolumeSound;
     public AudioSource MusicSource;
     public AudioSource SoundSource;
-
+        
+    private bool isPaused;
     public enum room { Lobby,Kitchen,Bedroom,Bathroom };
 	// Use this for initialization
 	void Start () {
-		
+        windowsSetting.SetActive(false);
+        PauseDisplay.SetActive(false);
+        isPaused = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseDisplay.SetActive(true);
+            isPaused = true;
+        }
 	}
-    public void changeRoom(int room)
+    public void continueGame()
+    {
+        PauseDisplay.SetActive(false);
+        isPaused = false;
+    }
+    public void changeRoom(room room)
     {
         lobbyDisplay.SetActive(false);
         kitchenDisplay.SetActive(false);
         bedroomDisplay.SetActive(false);
         bathroomDisplay.SetActive(false);
-        switch (room)
+        int x = (int)room;
+        switch (x)
         {
             case 0:
                 lobbyDisplay.SetActive(true);
@@ -71,4 +85,6 @@ public class GameScript : MonoBehaviour {
     {
         windowsSetting.SetActive(true);
     }
+
+    
 }

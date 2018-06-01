@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -49,5 +50,11 @@ public class MainMenuScript : MonoBehaviour
     public void opensetting()
     {
         windowsSetting.SetActive(true);
+    }
+
+    public void StartGame()
+    {
+
+        SceneManager.LoadScene(1);
     }
 }

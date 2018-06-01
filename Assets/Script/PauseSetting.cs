@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 public class PauseSetting : MonoBehaviour
 {
-
+{
     public GameObject windowsSetting;
     public Slider VolumeMusic;
     public Slider VolumeSound;
