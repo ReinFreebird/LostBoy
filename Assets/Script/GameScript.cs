@@ -8,6 +8,11 @@ public class GameScript : MonoBehaviour {
     public GameObject kitchenDisplay;
     public GameObject bedroomDisplay;
     public GameObject bathroomDisplay;
+    public GameObject windowsSetting;
+    public Slider VolumeMusic;
+    public Slider VolumeSound;
+    public AudioSource MusicSource;
+    public AudioSource SoundSource;
 
     public enum room { Lobby,Kitchen,Bedroom,Bathroom };
 	// Use this for initialization
@@ -41,5 +46,30 @@ public class GameScript : MonoBehaviour {
                 bathroomDisplay.SetActive(true);
                 break;
         }
+    }
+    public void changemusic()
+    {
+        MusicSource.volume = VolumeMusic.value;
+    }
+
+    public void changesound()
+    {
+        SoundSource.volume = VolumeSound.value;
+    }
+
+    public void closesetting(bool applied)
+    {
+        if (applied)
+
+        {
+
+        }
+        windowsSetting.SetActive(false);
+
+    }
+
+    public void opensetting()
+    {
+        windowsSetting.SetActive(true);
     }
 }
