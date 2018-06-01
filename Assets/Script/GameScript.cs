@@ -24,14 +24,13 @@ public class GameScript : MonoBehaviour {
 	void Update () {
 		
 	}
-    public void changeRoom(room room)
+    public void changeRoom(int room)
     {
         lobbyDisplay.SetActive(false);
         kitchenDisplay.SetActive(false);
         bedroomDisplay.SetActive(false);
         bathroomDisplay.SetActive(false);
-        int x = (int)room;
-        switch (x)
+        switch (room)
         {
             case 0:
                 lobbyDisplay.SetActive(true);
