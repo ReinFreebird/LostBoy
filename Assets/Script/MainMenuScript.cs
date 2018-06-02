@@ -69,11 +69,8 @@ public class MainMenuScript : MonoBehaviour
     {
         MusicSource.volume = playerPrefHandler.GetMusicVolume();
         SoundSource.volume = playerPrefHandler.GetSoundVolume();
-<<<<<<< HEAD
         VolumeMusic.value = playerPrefHandler.GetMusicVolume();
         VolumeSound.value = playerPrefHandler.GetSoundVolume();
 
-=======
->>>>>>> 983ff42b37efb55f66143c2ec3ce0f3fb015c297
     }
 }
