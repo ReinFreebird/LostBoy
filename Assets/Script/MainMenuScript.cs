@@ -12,7 +12,8 @@ public class MainMenuScript : MonoBehaviour
     public AudioSource MusicSource;
     public AudioSource SoundSource;
 
-
+    private float currentMusicVolume;
+    private float currentSoundVolume;
     // Use this for initialization
     void Start()
     {
@@ -41,8 +42,13 @@ public class MainMenuScript : MonoBehaviour
         if (applied)
 
         {
-
+            
+            playerPrefHandler.applySetting(MusicSource.volume, SoundSource.volume);
+            currentMusicVolume = playerPrefHandler.GetMusicVolume();
+            currentSoundVolume = playerPrefHandler.GetSoundVolume();
         }
+        SoundSource.volume = currentSoundVolume;
+        MusicSource.volume = currentMusicVolume;
         windowsSetting.SetActive(false);
 
     }
@@ -56,5 +62,10 @@ public class MainMenuScript : MonoBehaviour
     {
 
         SceneManager.LoadScene(1);
+    }
+    void setSoundPrefs()
+    {
+        MusicSource.volume = playerPrefHandler.GetMusicVolume();
+        SoundSource.volume = playerPrefHandler.GetSoundVolume();
     }
 }

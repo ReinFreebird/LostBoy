@@ -26,6 +26,14 @@ public static class playerPrefHandler
         PlayerPrefs.SetFloat("musicVolume", musicVolume);
         PlayerPrefs.SetFloat("soundVolume", soundVolume);
     }
+    public static float GetMusicVolume()
+    {
+        return PlayerPrefs.GetFloat("musicVolume", 1);
+    }
+    public static float GetSoundVolume()
+    {
+        return PlayerPrefs.GetFloat("soundVolume", 1);
+    }
     public static void startNewGame()
     {
         int[] area = { 0, 1, 2 };
@@ -43,9 +51,9 @@ public static class playerPrefHandler
             }
 
         }
-        int area1 = (int)Random.Range(0, 2);
-        int area2 = (int)Random.Range(0, 2);
-        int area3 = (int)Random.Range(0, 2);
+        int area1 = (int)Random.Range(0, 15);
+        int area2 = (int)Random.Range(0, 15);
+        int area3 = (int)Random.Range(0, 15);
         bool[] doneArea = { false, false, false };
 
         PlayerPrefsX.SetIntArray("areaGame", area);
@@ -65,6 +73,11 @@ public static class playerPrefHandler
     public static bool[] GetAreaDone()
     {
         return PlayerPrefsX.GetBoolArray("areaDone");
+    }
+    public static int[] GetAreaKeyList()
+    {
+        int[] list = { PlayerPrefs.GetInt("area1Key"), PlayerPrefs.GetInt("area2Key"), PlayerPrefs.GetInt("area3Key") };
+        return list;
     }
 
 }
