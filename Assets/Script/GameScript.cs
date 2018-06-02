@@ -12,12 +12,13 @@ public class GameScript : MonoBehaviour {
     public GameObject windowsSetting;
     public GameObject debugDisplay;
     public GameObject doneList;
+    public Text currentRoomText;
     public Text[] doneAreas;
     public Slider VolumeMusic;
     public Slider VolumeSound;
     public AudioSource MusicSource;
     public AudioSource SoundSource;
-    public GameObject dialougePrefabs;
+    public GameObject dialougeBox;
     //Randomly generated per gameplay
     private bool[] areaDone;
     private int[] gameAreaOrder;
@@ -40,6 +41,7 @@ public class GameScript : MonoBehaviour {
     private float currentMusicVolume;
     private float currentSoundVolume;
     private bool debugMode = false;
+    private int currentArea;
 
     
 
@@ -48,8 +50,10 @@ public class GameScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         playerPrefHandler.startNewGame();
+        setSoundPrefs();
         setupGame();
-
+        currentArea = -1;
+        currentRoomText.text = GetAreaName(currentArea);
         if (debugMode)
         {
             debugDisplay.SetActive(true);
@@ -80,9 +84,20 @@ public class GameScript : MonoBehaviour {
             doneList.SetActive(!doneList.activeSelf);
         }
 	}
+    void openDialouge(string line)
+    {
+        dialougeBox.GetComponentInChildren<Text>().text = line;
+        dialougeBox.SetActive(true);
+        isPaused = true;
+    }
+    public void closeDialouge()
+    {
+        dialougeBox.SetActive(false);
+        isPaused = false;
+    }
     void checkDoneList()
     {
-        bool[] done = playerPrefHandler.GetAreaDone();
+        bool[] done = areaDone;
         for (int i = 0; i < 3; i++)
         {
             if (done[i])
@@ -113,7 +128,7 @@ public class GameScript : MonoBehaviour {
             case 2:
                 return "Bathroom";
             default:
-                return "Area not found";
+                return "Lobby";
         }
     }
     
@@ -140,7 +155,7 @@ public class GameScript : MonoBehaviour {
         SoundSource.volume = currentSoundVolume;
         MusicSource.volume = currentMusicVolume;
         windowsSetting.SetActive(false);
-
+        
     }
 
     public void opensetting()
@@ -148,11 +163,14 @@ public class GameScript : MonoBehaviour {
         windowsSetting.SetActive(true);
         currentMusicVolume = MusicSource.volume;
         currentSoundVolume = SoundSource.volume;
+        setSoundPrefs();
     }
     void setSoundPrefs()
     {
         MusicSource.volume = playerPrefHandler.GetMusicVolume();
         SoundSource.volume = playerPrefHandler.GetSoundVolume();
+        VolumeMusic.value = playerPrefHandler.GetMusicVolume();
+        VolumeSound.value = playerPrefHandler.GetSoundVolume();
     }
     void setupGame()
     {
@@ -169,6 +187,7 @@ public class GameScript : MonoBehaviour {
          */
 
     {
+        checkDoneList();
         if (checkRoom(room))
         {
             lobbyDisplay.SetActive(false);
@@ -181,20 +200,26 @@ public class GameScript : MonoBehaviour {
                 
                 case 0:
                     kitchenDisplay.SetActive(true);
+                    currentArea = 0;
                     break;
                 case 1:
                     bedroomDisplay.SetActive(true);
+                    currentArea = 1;
                     break;
                 case 2:
                     bathroomDisplay.SetActive(true);
+                    currentArea = 2;
                     break;
                 default:
                     lobbyDisplay.SetActive(true);
+                    currentArea = -1;
                     break;
             }
+            currentRoomText.text = GetAreaName(currentArea);
         }
         else
         {
+            openDialouge("Door has not been unlocked");
             Debug.Log("Door has not been unlocked");
         }
     }
@@ -218,6 +243,66 @@ public class GameScript : MonoBehaviour {
         else
         {
             return areaDone[areaOrderNumber - 1];
+        }
+    }
+    public void checkItem(int index)
+    {
+        //Get area number
+        int areaToCheck = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            if (gameAreaOrder[i] == currentArea)
+            {
+                areaToCheck = i;
+                break;
+            }
+        }
+        if (areaDone[areaToCheck])
+        {
+            openDialouge("You have already found the key in this room");
+
+        }
+        else {
+            int rightRooms = 0;
+            if (index == areaKey[currentArea])
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if (!areaDone[i])
+                    {
+                        rightRooms = i;
+                        areaDone[i] = true;
+                        break;
+                    }
+                }
+                if (areaDone[2])
+                {
+                    openDialouge("You have found to exit the house");
+                }
+                else {
+                    openDialouge("You have found the key to go to " + GetAreaName(gameAreaOrder[rightRooms + 1]));
+                }
+                
+            }
+            else
+            {
+                openDialouge("You found nothing");
+            }
+        }
+    }
+    public void saveGame()
+    {
+        playerPrefHandler.SetAreaDone(areaDone);
+    }
+    public void finishGame()
+    {
+        if (areaDone[2])
+        {
+            openDialouge("YOU WON");
+        }
+        else
+        {
+            openDialouge("You don't have the key to exit");
         }
     }
 }
