@@ -6440,6 +6440,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114485336686931040, guid: 05de86ab7d1448547b2aedf51b798f38,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 08349642dd00f3641939767edfa9b5c9,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05de86ab7d1448547b2aedf51b798f38, type: 2}
   m_IsPrefabParent: 0
@@ -7838,8 +7844,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 219198200}
-        m_MethodName: ExitNow
+      - m_Target: {fileID: 672158581}
+        m_MethodName: quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

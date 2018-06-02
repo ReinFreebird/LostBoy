@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameScript : MonoBehaviour {
 
@@ -341,6 +342,10 @@ public class GameScript : MonoBehaviour {
         SoundSource.clip = SoundClips[sounds];
         SoundSource.Play();
 
+    }
+    public void quit()
+    {
+        SceneManager.LoadScene(0);
     }
     void printHint()
     {
