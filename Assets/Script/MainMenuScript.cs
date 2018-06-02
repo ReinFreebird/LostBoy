@@ -12,12 +12,14 @@ public class MainMenuScript : MonoBehaviour
     public AudioSource MusicSource;
     public AudioSource SoundSource;
 
-
+    private float currentMusicVolume;
+    private float currentSoundVolume;
     // Use this for initialization
     void Start()
     {
-        //windowsSetting.SetActive(false);
-
+        currentMusicVolume = playerPrefHandler.GetMusicVolume();
+        currentSoundVolume = playerPrefHandler.GetSoundVolume();
+        setSoundPrefs();
     }
 
     // Update is called once per frame
@@ -41,8 +43,13 @@ public class MainMenuScript : MonoBehaviour
         if (applied)
 
         {
-
+            
+            playerPrefHandler.applySetting(MusicSource.volume, SoundSource.volume);
+            currentMusicVolume = playerPrefHandler.GetMusicVolume();
+            currentSoundVolume = playerPrefHandler.GetSoundVolume();
         }
+        SoundSource.volume = currentSoundVolume;
+        MusicSource.volume = currentMusicVolume;
         windowsSetting.SetActive(false);
 
     }
@@ -50,11 +57,20 @@ public class MainMenuScript : MonoBehaviour
     public void opensetting()
     {
         windowsSetting.SetActive(true);
+        setSoundPrefs();
     }
 
     public void StartGame()
     {
 
         SceneManager.LoadScene(1);
+    }
+    void setSoundPrefs()
+    {
+        MusicSource.volume = playerPrefHandler.GetMusicVolume();
+        SoundSource.volume = playerPrefHandler.GetSoundVolume();
+        VolumeMusic.value = playerPrefHandler.GetMusicVolume();
+        VolumeSound.value = playerPrefHandler.GetSoundVolume();
+
     }
 }
