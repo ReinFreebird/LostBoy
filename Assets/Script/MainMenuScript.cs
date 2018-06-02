@@ -77,6 +77,17 @@ public class MainMenuScript : MonoBehaviour
 
         SceneManager.LoadScene(1);
     }
+    public void Load()
+    {
+        if (!playerPrefHandler.isSaved())
+        {
+            StartGame();
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
     void setSoundPrefs()
     {
         MusicSource.volume = playerPrefHandler.GetMusicVolume();
