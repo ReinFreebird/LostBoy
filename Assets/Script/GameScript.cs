@@ -64,7 +64,7 @@ public class GameScript : MonoBehaviour {
     //public enum room { Lobby,Kitchen,Bedroom,Bathroom };
 	// Use this for initialization
 	void Start () {
-        playerPrefHandler.startNewGame();
+        //playerPrefHandler.startNewGame();
         setSoundPrefs();
         setupGame();
         currentArea = -1;

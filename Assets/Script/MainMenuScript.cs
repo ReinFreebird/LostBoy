@@ -78,7 +78,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void StartGame()
     {
-
+        playerPrefHandler.startNewGame();
         SceneManager.LoadScene(2);
     }
     public void Load()
