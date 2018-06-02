@@ -14,11 +14,23 @@ public class GameScript : MonoBehaviour {
     public GameObject doneList;
     public Text currentRoomText;
     public Text[] doneAreas;
+    public Text hint;
     public Slider VolumeMusic;
     public Slider VolumeSound;
     public AudioSource MusicSource;
     public AudioSource SoundSource;
     public GameObject dialougeBox;
+    public AudioClip[] SoundClips;
+    /*click button choice 2
+     * ketemu key item 2
+     * Tidak ketemu cancel 2
+     * Apply Setting Jingle 2
+     * Buka kertas Book pag 1
+     * buka pintu open 1
+     * menang short triumphal
+     */
+
+
     //Randomly generated per gameplay
     private bool[] areaDone;
     private int[] gameAreaOrder;
@@ -43,7 +55,9 @@ public class GameScript : MonoBehaviour {
     private bool debugMode = false;
     private int currentArea;
 
-    
+    public string[] kitchenHint;
+    public string[] bedroomHint;
+    public string[] bathroomHint;
 
 
     //public enum room { Lobby,Kitchen,Bedroom,Bathroom };
@@ -75,11 +89,12 @@ public class GameScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.P)&!isPaused)
         {
             PauseDisplay.SetActive(true);
-
+            Sound(0);
             isPaused = true;
         }
         if (Input.GetKeyDown(KeyCode.O) & !isPaused)
         {
+            Sound(4);
             checkDoneList();
             doneList.SetActive(!doneList.activeSelf);
         }
@@ -97,6 +112,7 @@ public class GameScript : MonoBehaviour {
     }
     void checkDoneList()
     {
+        printHint();
         bool[] done = areaDone;
         for (int i = 0; i < 3; i++)
         {
@@ -111,10 +127,12 @@ public class GameScript : MonoBehaviour {
                 doneAreas[i].color = Color.grey;
             }
         }
+        printHint();
     }
     public void continueGame()
     {
         PauseDisplay.SetActive(false);
+        Sound(0);
         isPaused = false;
     }
     private string GetAreaName(int area)
@@ -145,9 +163,9 @@ public class GameScript : MonoBehaviour {
     public void closesetting(bool applied)
     {
         if (applied)
-
+            Sound(0);
         {
-
+            Sound(3);
             playerPrefHandler.applySetting(MusicSource.volume, SoundSource.volume);
             currentMusicVolume = playerPrefHandler.GetMusicVolume();
             currentSoundVolume = playerPrefHandler.GetSoundVolume();
@@ -160,6 +178,7 @@ public class GameScript : MonoBehaviour {
 
     public void opensetting()
     {
+        Sound(0);
         windowsSetting.SetActive(true);
         currentMusicVolume = MusicSource.volume;
         currentSoundVolume = SoundSource.volume;
@@ -215,10 +234,12 @@ public class GameScript : MonoBehaviour {
                     currentArea = -1;
                     break;
             }
+            Sound(5);
             currentRoomText.text = GetAreaName(currentArea);
         }
         else
         {
+            Sound(2);
             openDialouge("Door has not been unlocked");
             Debug.Log("Door has not been unlocked");
         }
@@ -260,7 +281,7 @@ public class GameScript : MonoBehaviour {
         if (areaDone[areaToCheck])
         {
             openDialouge("You have already found the key in this room");
-
+            Sound(1);
         }
         else {
             int rightRooms = 0;
@@ -277,15 +298,18 @@ public class GameScript : MonoBehaviour {
                 }
                 if (areaDone[2])
                 {
+                    Sound(1);
                     openDialouge("You have found to exit the house");
                 }
                 else {
+                    Sound(1);
                     openDialouge("You have found the key to go to " + GetAreaName(gameAreaOrder[rightRooms + 1]));
                 }
                 
             }
             else
             {
+                Sound(2);
                 openDialouge("You found nothing");
             }
         }
@@ -293,16 +317,61 @@ public class GameScript : MonoBehaviour {
     public void saveGame()
     {
         playerPrefHandler.SetAreaDone(areaDone);
+        openDialouge("Game has been saved");
+        PauseDisplay.SetActive(false);
+        Sound(3);
+
     }
     public void finishGame()
     {
         if (areaDone[2])
         {
+            Sound(6);
             openDialouge("YOU WON");
         }
         else
         {
+            Sound(2);
             openDialouge("You don't have the key to exit");
+        }
+    }
+    public void Sound(int sounds)
+    {
+        SoundSource.clip = SoundClips[sounds];
+        SoundSource.Play();
+
+    }
+    void printHint()
+    {
+        int currentHint = -1;
+        for (int i = 0; i < 3; i++)
+        {
+            if (!areaDone[i])
+            {
+                currentHint = i;
+                break;
+            }
+        }
+        if (!areaDone[2])
+        {
+            switch (gameAreaOrder[currentHint])
+            {
+                case 0:
+                    hint.text = "Hint: " + kitchenHint[areaKey[0]];
+                    break;
+                case 1:
+                    hint.text = "Hint: " + bedroomHint[areaKey[1]];
+                    break;
+                case 2:
+                    hint.text = "Hint: " + bathroomHint[areaKey[2]];
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            hint.text = "No more hints are needed";
         }
     }
 }

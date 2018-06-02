@@ -2999,7 +2999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.899998, y: 211.6}
+  m_AnchoredPosition: {x: 36.000004, y: 257.95}
   m_SizeDelta: {x: 717.8, y: 154.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &413209794
@@ -3074,7 +3074,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.899994, y: -77.350006}
+  m_AnchoredPosition: {x: 36, y: -31}
   m_SizeDelta: {x: 717.8, y: 154.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417335274
@@ -3238,6 +3238,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 418228428}
+--- !u!1 &431744481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 431744482}
+  - component: {fileID: 431744484}
+  - component: {fileID: 431744483}
+  m_Layer: 5
+  m_Name: Hint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &431744482
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 431744481}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99968, y: 0.99968, z: 0.999936}
+  m_Children: []
+  m_Father: {fileID: 912164469}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 36.056, y: -341.3}
+  m_SizeDelta: {x: 717.92, y: 323.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &431744483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 431744481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8e33185d582066945b51b27ad82cfe56, type: 3}
+    m_FontSize: 72
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 72
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Hint: '
+--- !u!222 &431744484
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 431744481}
 --- !u!1 &445213590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,7 +3898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.899994, y: 77.350006}
+  m_AnchoredPosition: {x: 36, y: 123.70001}
   m_SizeDelta: {x: 717.8, y: 154.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &574356558
@@ -4169,11 +4243,56 @@ MonoBehaviour:
   - {fileID: 6724709}
   - {fileID: 1671828956}
   - {fileID: 585106421}
+  hint: {fileID: 431744483}
   VolumeMusic: {fileID: 1459910632}
   VolumeSound: {fileID: 1580009429}
   MusicSource: {fileID: 1861643713}
   SoundSource: {fileID: 227668800}
   dialougeBox: {fileID: 40693314}
+  SoundClips:
+  - {fileID: 8300000, guid: b5177d49ef9b92d4393ce05c94b0c37e, type: 3}
+  - {fileID: 8300000, guid: 24d24ca5f773a474f95d9d6050982c27, type: 3}
+  - {fileID: 8300000, guid: 71b9543312534014788da6aac22d4d81, type: 3}
+  - {fileID: 8300000, guid: 3acbf001dff343b40a7bb00d50c9608c, type: 3}
+  - {fileID: 8300000, guid: 656d4177f0d5760449b913d51a6d8557, type: 3}
+  - {fileID: 8300000, guid: 857106a579cdc824d921317f337ed1fb, type: 3}
+  - {fileID: 8300000, guid: 48714ae33988bf743a938619a21244d7, type: 3}
+  kitchenHint:
+  - '-'
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  bedroomHint:
+  - '-'
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - A place in which cat are both alive and dead
+  bathroomHint:
+  - 
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
 --- !u!1 &718879998
 GameObject:
   m_ObjectHideFlags: 0
@@ -4818,6 +4937,7 @@ RectTransform:
   - {fileID: 413209793}
   - {fileID: 574356557}
   - {fileID: 417335273}
+  - {fileID: 431744482}
   m_Father: {fileID: 20199977}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5987,7 +6107,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DONE LIST
+  m_Text: GUIDE
 --- !u!222 &1266338510
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9100,7 +9220,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2090549666}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672158581}
+        m_MethodName: saveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2090549666
