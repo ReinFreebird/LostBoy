@@ -173,13 +173,14 @@ public class GameScript : MonoBehaviour {
         SoundSource.volume = currentSoundVolume;
         MusicSource.volume = currentMusicVolume;
         windowsSetting.SetActive(false);
-        
+        PauseDisplay.SetActive(true);
     }
 
     public void opensetting()
     {
         Sound(0);
         windowsSetting.SetActive(true);
+        PauseDisplay.SetActive(false);
         currentMusicVolume = MusicSource.volume;
         currentSoundVolume = SoundSource.volume;
         setSoundPrefs();
