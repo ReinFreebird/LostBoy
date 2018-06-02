@@ -25,6 +25,10 @@ public class MainMenuScript : MonoBehaviour
     private float currentMusicVolume;
     private float currentSoundVolume;
     // Use this for initialization
+    void Awake()
+    {
+        Screen.SetResolution(1028, 769, true);
+    }
     void Start()
     {
         currentMusicVolume = playerPrefHandler.GetMusicVolume();
@@ -75,7 +79,18 @@ public class MainMenuScript : MonoBehaviour
     public void StartGame()
     {
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
+    }
+    public void Load()
+    {
+        if (!playerPrefHandler.isSaved())
+        {
+            StartGame();
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
     }
     void setSoundPrefs()
     {
@@ -91,5 +106,12 @@ public class MainMenuScript : MonoBehaviour
     SoundSource.clip = SoundClips[sounds];
         SoundSource.Play();
 
+    }
+    public void quit()
+    {
+        //Debug.Log (123);
+        Sound(1);
+        Application.Quit();
+        
     }
 }
