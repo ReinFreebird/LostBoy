@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuScript : MonoBehaviour
 {
     public GameObject windowsSetting;
+    public GameObject windowsCredits;
     public Slider VolumeMusic;
     public Slider VolumeSound;
     public AudioSource MusicSource;
@@ -34,6 +35,12 @@ public class MainMenuScript : MonoBehaviour
         currentMusicVolume = playerPrefHandler.GetMusicVolume();
         currentSoundVolume = playerPrefHandler.GetSoundVolume();
         setSoundPrefs();
+        if (playerPrefHandler.GetIt())
+        {
+            Sound(4);
+            windowsCredits.SetActive(true);
+            playerPrefHandler.finishIt();
+        }
         
     }
 
@@ -106,6 +113,11 @@ public class MainMenuScript : MonoBehaviour
     SoundSource.clip = SoundClips[sounds];
         SoundSource.Play();
 
+    }
+    public void closeCredits()
+    {
+        Sound(4);
+        windowsCredits.SetActive(false);
     }
     public void quit()
     {

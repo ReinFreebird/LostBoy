@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class Prologue : MonoBehaviour {
     public Text textArea;
     public string[] strings;
+    public string[] stringsEN;
     public float speed = 0.1f;
     public GameObject continueButton;
     int stringIndex = 0;
     int characterIndex = 0;
 
+    bool isIndonesian = false;
 	// Use this for initialization
 	void Start () {
         continueButton.SetActive(false);
@@ -22,7 +24,15 @@ public class Prologue : MonoBehaviour {
         string temp = null;
         for (int i = 0; i < strings.Length; i++)
         {
-            temp += strings[i] + " ";
+            if (isIndonesian)
+            {
+                temp += strings[i] + " ";
+            }
+            else
+            {
+                temp += stringsEN[i] + " ";
+            }
+            
         }
         while (characterIndex < temp.Length)
         {

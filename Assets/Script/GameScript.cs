@@ -21,6 +21,7 @@ public class GameScript : MonoBehaviour {
     public AudioSource MusicSource;
     public AudioSource SoundSource;
     public GameObject dialougeBox;
+    public GameObject finishedBox;
     public AudioClip[] SoundClips;
     /*click button choice 2
      * ketemu key item 2
@@ -329,13 +330,18 @@ public class GameScript : MonoBehaviour {
         if (areaDone[2])
         {
             Sound(6);
-            openDialouge("YOU WON");
+            finishedBox.SetActive(true);
         }
         else
         {
             Sound(2);
             openDialouge("You don't have the key to exit");
         }
+    }
+    public void endGame()
+    {
+        playerPrefHandler.endGame();
+        SceneManager.LoadScene(0);
     }
     public void Sound(int sounds)
     {

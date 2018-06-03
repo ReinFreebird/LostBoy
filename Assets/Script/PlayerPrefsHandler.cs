@@ -20,6 +20,7 @@ public static class playerPrefHandler
      * PlayerPrefsX bool[] areaDone, list of completed area. 1 true can go to area2, 2 trues can go to area3, 3 trues you can exit
      * 
      * PlayerPrefs bool saved, check if there's any saved game. a finished game will turn saved to false
+     * PlayerPrefs bool gameFinish, if true, change screen from Game to Main Menu will automatically enable Credit part
      */
 
     public static void applySetting(float musicVolume, float soundVolume)
@@ -64,7 +65,7 @@ public static class playerPrefHandler
         PlayerPrefs.SetInt("area2Key", area2);
         PlayerPrefs.SetInt("area3Key", area3);
         PlayerPrefsX.SetBoolArray("areaDone", doneArea);
-        PlayerPrefsX.SetBool("saved", true);
+        PlayerPrefsX.SetBool("saved", false);
     }
     public static int[] GetAreaGame()
     {
@@ -73,6 +74,7 @@ public static class playerPrefHandler
     public static void SetAreaDone(bool[] done)
     {
         PlayerPrefsX.SetBoolArray("areaDone", done);
+        PlayerPrefsX.SetBool("saved", true);
     }
     public static bool[] GetAreaDone()
     {
@@ -90,6 +92,15 @@ public static class playerPrefHandler
     public static void endGame()
     {
         PlayerPrefsX.SetBool("saved", false);
+        PlayerPrefsX.SetBool("GameFinish", true);
+    }
+    public static bool GetIt()
+    {
+        return PlayerPrefsX.GetBool("GameFinish", false);
+    }
+    public static void finishIt()
+    {
+        PlayerPrefsX.SetBool("GameFinish", false);
     }
 
 }
