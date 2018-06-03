@@ -34,7 +34,7 @@ public class MainMenuScript : MonoBehaviour
         currentMusicVolume = playerPrefHandler.GetMusicVolume();
         currentSoundVolume = playerPrefHandler.GetSoundVolume();
         setSoundPrefs();
-        Sound(3);
+        
     }
 
     // Update is called once per frame
