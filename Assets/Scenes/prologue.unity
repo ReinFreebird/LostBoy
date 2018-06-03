@@ -313,14 +313,14 @@ MonoBehaviour:
   - Dengan perasaan khawatir, bocah itu melangkahkan kaki nya dan memulai Perjalanan
     nya mencari Jalan keluar
   stringsEN:
-  - Once open a time, there was a boy walking into the depth of the night.
+  - Once upon a time, there was a Boy walking into the depth of the night.
   - He was lost, not knowing the way.
-  - There world is so vast for him.
+  - The world is too vast for him.
   - He then found himself in an unfamiliar place.
   - The ten years old boy tries not to be faltered.
-  - He knew, if he can come in, he can come out
+  - He knew, if he can come in, he can come out.
   - With worries at heart, he walks looking for a way out.
-  speed: 0.02
+  speed: 0.075
   continueButton: {fileID: 1429583813}
 --- !u!82 &1140847495
 AudioSource:
@@ -331,7 +331,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6457e44e44cc967458815493cc30c415, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d75483d3103d5ba49ad8158b0377a762, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -920,7 +920,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1768094125
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -85,11 +85,13 @@ public class MainMenuScript : MonoBehaviour
 
     public void StartGame()
     {
+        Sound(0);
         playerPrefHandler.startNewGame();
         SceneManager.LoadScene(2);
     }
     public void Load()
     {
+        Sound(0);
         if (!playerPrefHandler.isSaved())
         {
             StartGame();

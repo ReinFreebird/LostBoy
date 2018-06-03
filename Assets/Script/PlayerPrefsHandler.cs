@@ -55,9 +55,9 @@ public static class playerPrefHandler
             }
 
         }
-        int area1 = (int)Random.Range(1, 10);
-        int area2 = (int)Random.Range(1, 10);
-        int area3 = (int)Random.Range(1, 10);
+        int area1 = (int)Random.Range((int)1, (int)11);
+        int area2 = (int)Random.Range((int)1, (int)11);
+        int area3 = (int)Random.Range((int)1, (int)11);
         bool[] doneArea = { false, false, false };
 
         PlayerPrefsX.SetIntArray("areaGame", area);

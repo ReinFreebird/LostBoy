@@ -463,10 +463,10 @@ RectTransform:
   m_Father: {fileID: 1840198566}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.000036621}
-  m_SizeDelta: {x: 1024, y: 768}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -8, y: 16.1}
+  m_SizeDelta: {x: 125.1, y: 83.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &208288704
 MonoBehaviour:
@@ -1225,7 +1225,7 @@ MonoBehaviour:
   MusicSource: {fileID: 1857449327}
   SoundSource: {fileID: 1234944463}
   SoundClips:
-  - {fileID: 8300000, guid: 71b9543312534014788da6aac22d4d81, type: 3}
+  - {fileID: 8300000, guid: b5177d49ef9b92d4393ce05c94b0c37e, type: 3}
   - {fileID: 8300000, guid: 24d24ca5f773a474f95d9d6050982c27, type: 3}
   - {fileID: 8300000, guid: 71b9543312534014788da6aac22d4d81, type: 3}
   - {fileID: 8300000, guid: 3acbf001dff343b40a7bb00d50c9608c, type: 3}
